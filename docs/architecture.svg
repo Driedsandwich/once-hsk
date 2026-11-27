@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1380" viewBox="0 0 1600 1380" role="img" aria-labelledby="title desc">
+<title id="title">Once architecture: recover a payment without creating another order</title>
+<desc id="desc">The implemented local demonstration connects a receipt and two human approval steps to the Research Agent, agent-facing MCP tools, a durable JSON Lines journal, the seller's A2A interface, and the local HSP mock. Real HSP QA is not yet available, and OnceLedger mainnet deployment is planned. OnceLedger stores one-time records and does not independently confirm HSP payments.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 1 1 L 11 6 L 1 11 z" fill="#2563EB"/></marker>
+<marker id="plannedArrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M 1 1 L 11 6 L 1 11 z" fill="#B45309"/></marker>
+<style>
+text { font-family: Arial, 'DejaVu Sans', sans-serif; fill: #132238; }
+.title { font-size: 44px; font-weight: 700; }
+.subtitle { font-size: 25px; fill: #42526B; }
+.heading { font-size: 25px; font-weight: 700; }
+.body { font-size: 21px; }
+.small { font-size: 18px; fill: #42526B; }
+.label { font-size: 18px; font-weight: 600; fill: #2563EB; }
+.eyebrow { font-size: 18px; font-weight: 700; letter-spacing: 1.2px; }
+.mono { font-family: 'DejaVu Sans Mono', monospace; font-size: 19px; }
+.connector { fill: none; stroke: #2563EB; stroke-width: 3; marker-end: url(#arrow); }
+.planned { fill: none; stroke: #B45309; stroke-width: 3; stroke-dasharray: 9 7; marker-end: url(#plannedArrow); }
+</style>
+</defs>
+<rect width="1600" height="1380" fill="#F5F7FB"/>
+
+<text x="60" y="65" class="title">ONCE</text>
+<text x="245" y="62" class="subtitle">Recover the payment. Preserve its identity.</text>
+<rect x="60" y="100" width="1480" height="55" rx="12" fill="#EAF1FF" stroke="#B7CCF5" stroke-width="2"/>
+<text x="82" y="135" class="eyebrow" style="fill:#1D4ED8">CURRENT EVIDENCE: LOCAL HSP MOCK</text>
+<text x="740" y="135" class="body">Real HSP QA: not yet available  |  Mainnet contract: planned</text>
+<path d="M 460 255 H 590" class="connector"/>
+<text x="523" y="239" class="label" text-anchor="middle">Controls</text>
+<path d="M 590 340 H 460" class="connector"/>
+<text x="523" y="323" class="label" text-anchor="middle">Receipt</text>
+<path d="M 460 500 H 535 V 460 H 590" class="connector"/>
+<text x="505" y="482" class="label" text-anchor="middle">MCP</text>
+<path d="M 1030 300 H 1140" class="connector" marker-start="url(#arrow)"/>
+<text x="1085" y="282" class="label" text-anchor="middle">A2A</text>
+<path d="M 810 530 V 650" class="connector"/>
+<text x="830" y="584" class="label">Prepare / finalize / submit</text>
+<text x="830" y="610" class="label">Query original payment</text>
+<path d="M 650 530 V 610 H 260 V 650" class="connector" marker-start="url(#arrow)"/>
+<text x="350" y="638" class="label">Append / restore</text>
+<path d="M 1340 420 V 555 H 1090 V 810 H 1030" class="connector"/>
+<text x="1360" y="492" class="label">Seller queries</text>
+<text x="1360" y="518" class="label">before release</text>
+<path d="M 1030 710 H 1140" class="planned"/>
+<text x="1085" y="693" class="small" text-anchor="middle">Planned</text>
+<rect x="60" y="195" width="400" height="210" rx="18" fill="#FFFFFF" stroke="#C8D4E5" stroke-width="2"/>
+<text x="85" y="234" class="heading">Receipt &amp; approvals</text>
+<text x="85" y="271" class="body">State timeline · submission count</text>
+<text x="85" y="303" class="body">Approve before signing</text>
+<text x="85" y="335" class="body">Approve before submitting</text>
+<text x="85" y="367" class="body">Break / expire / restart demo</text>
+<rect x="60" y="445" width="400" height="140" rx="18" fill="#FFFFFF" stroke="#C8D4E5" stroke-width="2"/>
+<text x="85" y="484" class="heading">Agent-facing MCP</text>
+<text x="85" y="522" class="mono">pay_once · get_payment</text>
+<text x="85" y="553" class="mono">resume_pending</text>
+<rect x="590" y="195" width="440" height="335" rx="18" fill="#EDF4FF" stroke="#82A6E8" stroke-width="2"/>
+<text x="615" y="235" class="heading">Research Agent / Once</text>
+<text x="615" y="275" class="body">Stable requestId = keccak256</text>
+<text x="615" y="307" class="body">Buyer · seller · terms · intent ID</text>
+<text x="615" y="354" class="body">Payment state machine</text>
+<text x="615" y="386" class="body">Human-approved signing + submit</text>
+<text x="615" y="418" class="body">Fresh signature after quote expiry</text>
+<text x="615" y="450" class="body">Restart: query if intent saved</text>
+<rect x="1140" y="195" width="400" height="225" rx="18" fill="#FFFFFF" stroke="#C8D4E5" stroke-width="2"/>
+<text x="1165" y="235" class="heading">Pool Data Agent / seller</text>
+<text x="1165" y="274" class="body">A2A JSON-RPC: message/send</text>
+<text x="1165" y="306" class="body">Returns report terms</text>
+<text x="1165" y="338" class="body">Checks payment through HSP</text>
+<text x="1165" y="370" class="body">Releases report after confirmation</text>
+<rect x="60" y="650" width="400" height="220" rx="18" fill="#F0FDFA" stroke="#74B9AC" stroke-width="2"/>
+<text x="85" y="690" class="heading">Durable local journal</text>
+<text x="85" y="730" class="body">JSON Lines · append only · fsync</text>
+<text x="85" y="762" class="body">Persist SUBMIT_INTENT</text>
+<text x="85" y="794" class="body">immediately before sending</text>
+<text x="85" y="826" class="body">Restore the original payment</text>
+<rect x="590" y="650" width="440" height="235" rx="18" fill="#EDF4FF" stroke="#82A6E8" stroke-width="2"/>
+<text x="615" y="690" class="heading">HSP tools / local mock</text>
+<text x="615" y="729" class="mono">get_chain_config · create_order</text>
+<text x="615" y="760" class="mono">get_order · prepare_payment</text>
+<text x="615" y="791" class="mono">finalize_payment · estimate_fee</text>
+<text x="615" y="822" class="mono">submit_payment · query_payment</text>
+<text x="615" y="866" class="small">payment-submitted is not confirmation</text>
+<rect x="1140" y="650" width="400" height="220" rx="18" fill="#FFFBEB" stroke="#B45309" stroke-width="2" stroke-dasharray="10 7"/>
+<text x="1165" y="690" class="heading">Real HSP QA / Gateway</text>
+<text x="1165" y="730" class="body">Not yet available</text>
+<text x="1165" y="762" class="body">Real flow not yet run</text>
+<text x="1165" y="810" class="mono">{HSP_QA_FLOW_IDS}</text>
+<rect x="60" y="910" width="1480" height="58" rx="10" fill="#FFFFFF" stroke="#C8D4E5" stroke-width="2"/>
+<text x="82" y="947" class="body">Recovery: SUBMIT_INTENT or later → query_payment; no resubmit while unresolved. Unresolved outcome → PENDING_CONFIRMATION.</text>
+<rect x="60" y="1000" width="1480" height="232" rx="18" fill="#FFFBEB" stroke="#B45309" stroke-width="2" stroke-dasharray="10 7"/>
+<text x="85" y="1036" class="eyebrow" style="fill:#B45309">PLANNED MAINNET RECORD PATH · HSK CHAIN · CHAINID 177</text>
+<rect x="85" y="1060" width="300" height="135" rx="12" fill="#FFFFFF" stroke="#D9BA84" stroke-width="2"/>
+<text x="106" y="1099" class="heading">Application registrant</text>
+<text x="106" y="1136" class="small">Registers a request</text>
+<text x="106" y="1164" class="small">Records a settlement marker</text>
+<path d="M 385 1126 H 450" class="planned"/>
+<rect x="450" y="1060" width="580" height="135" rx="12" fill="#FFFFFF" stroke="#D9BA84" stroke-width="2"/>
+<text x="475" y="1099" class="heading">OnceLedger · Solidity · 50 lines</text>
+<text x="475" y="1136" class="mono">register(requestId, termsHash): once</text>
+<text x="475" y="1165" class="mono">markSettled(...): registrant only, once</text>
+<text x="1060" y="1096" class="mono">{ONCE_MAINNET_ADDRESS}</text>
+<text x="1060" y="1132" class="small">One-time records only.</text>
+<text x="1060" y="1161" class="small">HSP confirmation remains separate.</text>
+<text x="60" y="1282" class="body">Evidence: 50 application tests + 4 contract tests; one order and one submit call in the mock recovery demo.</text>
+<text x="60" y="1318" class="small">Public demo planned: {PUBLIC_DEMO_URL}</text>
+</svg>

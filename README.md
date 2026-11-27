@@ -4,7 +4,9 @@ Once is a TypeScript payment component for agent-to-agent purchases through the 
 
 Built for the HSK Chain Horizon Hackathon (track: Agent Payments & A2A Settlement). The demo is a Research Agent buying an "HSKSwap 1h flow report" from a Pool Data Agent for 0.50 USD. Recovery is demonstrated against a local HSP mock. No real HSP endpoint has been used and no real money moves.
 
-**Screenshot:** {ONCE_SCREENSHOT}
+![Once screen (public demo, ?mock=1)](docs/screenshot.png)
+
+![Once architecture](docs/architecture.svg)
 
 ## What is new
 
@@ -105,8 +107,8 @@ Last full run: 2026-11-27, 50 + 4 passing. All payment tests run against the loc
 | --- | --- |
 | OnceLedger on HSK Chain mainnet (chainId 177) | Planned: {ONCE_MAINNET_ADDRESS} |
 | Payment flow against the real HSP QA endpoint | Not yet run: {HSP_QA_FLOW_IDS} |
-| Demo video | {ONCE_VIDEO_URL} |
-| Public demo | Planned: {PUBLIC_DEMO_URL} |
+| Demo video | https://youtu.be/XTicM3n1Rkg |
+| Public demo | https://driedsandwich.github.io/once-hsk/?mock=1 (runs in the browser, no backend, no real funds) |
 
 Not verified against a real gateway:
 
