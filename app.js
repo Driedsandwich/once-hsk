@@ -14,7 +14,7 @@ const labels = {
   NEW: "Request created", ORDER_CREATED: "Order created", PREPARED: "Quote locked",
   APPROVED_SIGN: "You approved signing", SIGNED: "Signed", FINALIZED: "Mandate finalized",
   APPROVED_SUBMIT: "You approved sending", SUBMIT_INTENT: "Sending", SUBMITTED: "Sent",
-  CONFIRMED: "Confirmed on chain", FAILED: "Failed", PENDING_CONFIRMATION: "Waiting for confirmation"
+  CONFIRMED: "Confirmed by HSP", FAILED: "Failed", PENDING_CONFIRMATION: "Waiting for confirmation"
 };
 const help = {
   hsp: "HashKey's payment settlement platform",
@@ -129,8 +129,8 @@ function render() {
   const confirmed = r?.state === "CONFIRMED";
   const pending = r?.awaitingApproval;
   const armed = state.faults || {};
-  const modeText = {mock:"Test network: local HSP simulator. No real money.", external:"HSP QA (test network). No real money."};
-  $("network").textContent = modeText[state.mode] || "Test network. No real money.";
+  const modeText = {mock:"Local demo: HSP simulator. No real money.", external:"HSP QA (test environment). No real money."};
+  $("network").textContent = modeText[state.mode] || "Demo. No real money.";
   $("reqid").innerHTML = r ? 'Request <span title="' + escapeHtml(r.requestId) + '">' + escapeHtml(short(r.requestId)) + '</span>' + copyBtn(r.requestId) : "Awaiting request";
   const steps = ["Ask for a quote and approve","Break the connection right after paying","Restart the agent"];
   const done = [!!r?.history?.some(h => ["APPROVED_SIGN","APPROVED_SUBMIT"].includes(h.state)), crashed, resumed];
@@ -155,8 +155,9 @@ function render() {
   }).join("") : '<li class="empty">Ask for a quote to start the receipt.</li>';
   const hsp = state.hsp || {};
   const calls = hsp.submitPaymentCalls;
-  const paidOnce = calls === 1 && hsp.accepted === 1;
-  const verdict = paidOnce ? "Paid exactly once" : calls >= 2 ? "Submitted " + calls + " times — check" : calls === 0 ? "Not paid yet" : calls === 1 ? "Awaiting acceptance" : "Awaiting agent";
+  const acceptedOnce = hsp.accepted === 1;
+  const paidOnce = acceptedOnce && confirmed;
+  const verdict = paidOnce ? "Paid exactly once" : hsp.accepted >= 2 ? "Accepted " + hsp.accepted + " times — check" : acceptedOnce ? "HSP accepted 1 payment" : calls === 0 ? "Not paid yet" : calls >= 1 ? "Awaiting acceptance" : "Awaiting agent";
   const goodQuery = resumed && confirmed;
   let queryText = "No recovery query yet";
   if (crashed && !resumed) queryText = "Awaiting restart to query HSP";
