@@ -101,12 +101,12 @@ The demo server can point at another HSP endpoint through `ONCE_HSP_URL`, `ONCE_
 
 Last full run: 2026-11-27, 50 + 4 passing. All payment tests run against the local mock HSP.
 
-## Not done yet
+## Status
 
 | Item | Status |
 | --- | --- |
-| OnceLedger on HSK Chain mainnet (chainId 177) | Planned: {ONCE_MAINNET_ADDRESS} |
-| Payment flow against the real HSP QA endpoint | Not yet run: {HSP_QA_FLOW_IDS} |
+| OnceLedger on HSK Chain mainnet (chainId 177) | Planned (not deployed yet) |
+| Payment flow against the real HSP QA endpoint | Not yet run (QA access requested, not granted yet) |
 | Demo video | https://youtu.be/XTicM3n1Rkg |
 | Public demo | https://driedsandwich.github.io/once-hsk/?mock=1 (runs in the browser, no backend, no real funds) |
 

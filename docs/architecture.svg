@@ -24,7 +24,7 @@ text { font-family: Arial, 'DejaVu Sans', sans-serif; fill: #132238; }
 <text x="245" y="62" class="subtitle">Recover the payment. Preserve its identity.</text>
 <rect x="60" y="100" width="1480" height="55" rx="12" fill="#EAF1FF" stroke="#B7CCF5" stroke-width="2"/>
 <text x="82" y="135" class="eyebrow" style="fill:#1D4ED8">CURRENT EVIDENCE: LOCAL HSP MOCK</text>
-<text x="740" y="135" class="body">Real HSP QA: not yet available  |  Mainnet contract: planned</text>
+<text x="740" y="135" class="body">Real HSP QA: access not granted yet  |  Mainnet contract: planned</text>
 <path d="M 460 255 H 590" class="connector"/>
 <text x="523" y="239" class="label" text-anchor="middle">Controls</text>
 <path d="M 590 340 H 460" class="connector"/>
@@ -82,9 +82,9 @@ text { font-family: Arial, 'DejaVu Sans', sans-serif; fill: #132238; }
 <text x="615" y="866" class="small">payment-submitted is not confirmation</text>
 <rect x="1140" y="650" width="400" height="220" rx="18" fill="#FFFBEB" stroke="#B45309" stroke-width="2" stroke-dasharray="10 7"/>
 <text x="1165" y="690" class="heading">Real HSP QA / Gateway</text>
-<text x="1165" y="730" class="body">Not yet available</text>
+<text x="1165" y="730" class="body">Access not granted yet</text>
 <text x="1165" y="762" class="body">Real flow not yet run</text>
-<text x="1165" y="810" class="mono">{HSP_QA_FLOW_IDS}</text>
+<text x="1165" y="810" class="mono">flow IDs: none yet</text>
 <rect x="60" y="910" width="1480" height="58" rx="10" fill="#FFFFFF" stroke="#C8D4E5" stroke-width="2"/>
 <text x="82" y="947" class="body">Recovery: SUBMIT_INTENT or later → query_payment; no resubmit while unresolved. Unresolved outcome → PENDING_CONFIRMATION.</text>
 <rect x="60" y="1000" width="1480" height="232" rx="18" fill="#FFFBEB" stroke="#B45309" stroke-width="2" stroke-dasharray="10 7"/>
@@ -98,9 +98,9 @@ text { font-family: Arial, 'DejaVu Sans', sans-serif; fill: #132238; }
 <text x="475" y="1099" class="heading">OnceLedger · Solidity · 50 lines</text>
 <text x="475" y="1136" class="mono">register(requestId, termsHash): once</text>
 <text x="475" y="1165" class="mono">markSettled(...): registrant only, once</text>
-<text x="1060" y="1096" class="mono">{ONCE_MAINNET_ADDRESS}</text>
+<text x="1060" y="1096" class="mono">address: not deployed yet</text>
 <text x="1060" y="1132" class="small">One-time records only.</text>
 <text x="1060" y="1161" class="small">HSP confirmation remains separate.</text>
 <text x="60" y="1282" class="body">Evidence: 50 application tests + 4 contract tests; one order and one submit call in the mock recovery demo.</text>
-<text x="60" y="1318" class="small">Public demo planned: {PUBLIC_DEMO_URL}</text>
+<text x="60" y="1318" class="small">Public demo: driedsandwich.github.io/once-hsk/?mock=1</text>
 </svg>
