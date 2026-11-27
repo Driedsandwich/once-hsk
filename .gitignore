@@ -1,0 +1,23 @@
+# Dependencies and build output
+node_modules/
+artifacts/
+cache/
+typechain-types/
+coverage/
+dist/
+
+# Local run output (event logs written by the demo scripts)
+out/
+
+# Secrets and local settings
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.keystore
+
+# Logs and OS files
+*.log
+test_output.txt
+.DS_Store
