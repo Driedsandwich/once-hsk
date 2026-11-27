@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0A1220">
+  <title>Once · HSP settlement</title>
+  <link rel="icon" href="data:,">
+  <script>/* html[data-theme] is set before first paint: no ?theme= (or an unknown value) = receipt; ?theme=violet|gold picks those; ?theme=default keeps the original blue-green (no data-theme). meta theme-color follows --bg once styles.css is loaded. */(function(){var t=new URLSearchParams(location.search).get("theme");if(t==="default")return;if(t!=="violet"&&t!=="gold")t="receipt";var r=document.documentElement;r.setAttribute("data-theme",t);document.addEventListener("DOMContentLoaded",function(){var m=document.querySelector('meta[name="theme-color"]'),c=getComputedStyle(r).getPropertyValue("--bg").trim();if(m&&c)m.content=c})})();</script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-5 8-8 9-3-1-8-4-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+    <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="receipt" viewBox="0 0 24 24"><path d="M5 3l2 1.5L9.5 3 12 4.5 14.5 3 17 4.5 19 3v18l-2-1.5-2.5 1.5-2.5-1.5L9.5 21 7 19.5 5 21zM8.5 9h7m-7 4h5"/></symbol>
+    <symbol id="controls" viewBox="0 0 24 24"><path d="M3 7h4m5 0h9M3 17h10m5 0h3"/><circle cx="9.5" cy="7" r="2.5"/><circle cx="15.5" cy="17" r="2.5"/></symbol>
+    <symbol id="zap" viewBox="0 0 24 24"><path d="m14 2-10 12h7l-1 8 10-13h-7z"/></symbol>
+    <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="restart" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1.5 7M4 4v6h6"/></symbol>
+    <symbol id="code" viewBox="0 0 24 24"><path d="m7 8-4 4 4 4m10-8 4 4-4 4m-4-12-3 16"/></symbol>
+    <symbol id="key" viewBox="0 0 24 24"><circle cx="8" cy="10" r="4"/><path d="m11 13 7 7 3-3-2-2-2 2"/></symbol>
+  </svg>
+  <div class="network"><svg class="icon"><use href="#shield"/></svg><span id="network">Test network. No real money.</span></div>
+  <div id="alerts" role="alert" hidden></div>
+  <main>
+    <header>
+      <div class="identity"><div class="brand"><i class="brandmark" aria-hidden="true"></i>Once</div><span class="identity-rule"></span><h1>HSP settlement</h1><button class="help" data-help="hsp" aria-label="About HSP">?</button></div>
+      <p class="scenario">Research Agent buys <strong>"HSKSwap 1h flow report"</strong> from Pool Data Agent for <strong class="mono">0.50 USD</strong></p>
+      <button id="quote" data-action="quote" class="primary"><b class="num" aria-hidden="true">1</b><svg class="icon"><use href="#plus"/></svg>Ask for a quote</button>
+    </header>
+    <nav class="guide" id="guide" aria-label="Start here"><strong>Start here</strong><ol id="steps"></ol><p id="next" class="next-hint" aria-live="polite" hidden></p></nav>
+    <div class="dashboard">
+      <div class="maincol">
+        <section id="approval" class="panel approval" aria-live="polite" hidden></section>
+        <section class="panel receipt">
+          <div class="panelhead"><div class="title"><span class="tile"><svg class="icon"><use href="#receipt"/></svg></span><div><h2>Settlement receipt</h2><div class="sub mono" id="reqid">Awaiting request</div></div></div></div>
+          <div class="receiptbody">
+            <div class="history"><div class="sectiontitle"><h3>Activity timeline</h3><span class="tiny mono">UTC</span></div><ol id="history"></ol></div>
+            <div class="details"><div id="outcome" aria-live="polite"></div><div id="summary"></div></div>
+          </div>
+        </section>
+      </div>
+      <div class="sidecol">
+      <aside class="panel try">
+        <div class="title"><span class="tile"><svg class="icon"><use href="#controls"/></svg></span><h2>Try it</h2><span class="safe-note"><svg class="icon" aria-hidden="true"><use href="#shield"/></svg>Safe: simulated, no real money</span></div>
+        <p class="legend">Press 1, 2, 3 in order. Buttons 2 and <span class="mono">+</span> break something on purpose (<span class="mono">+</span> is optional). Button 3 recovers.</p>
+        <div class="controls">
+          <div><button class="action primary" data-action="quote"><b class="num" aria-hidden="true">1</b><svg class="icon"><use href="#plus"/></svg><span>Ask for a quote</span></button></div>
+          <div><button class="action fault" data-action="drop-after-submit"><b class="num" aria-hidden="true">2</b><svg class="icon"><use href="#zap"/></svg><span>Break the connection after sending</span></button><p>Drop the response after HSP accepts the payment.</p></div>
+          <div><button class="action fault" data-action="expire-quote"><b class="num opt" aria-hidden="true">+</b><svg class="icon"><use href="#clock"/></svg><span>Expire the quote</span></button><p>Make the quote expire before payment.</p></div>
+          <div><button class="action restart" data-action="restart"><b class="num" aria-hidden="true">3</b><svg class="icon"><use href="#restart"/></svg><span>Restart the agent</span></button><p>Look up the original payment without resending.</p></div>
+        </div>
+        <div class="recovery"><h3>Recovery result</h3><div id="recovery" aria-live="polite"></div></div>
+      </aside>
+      <footer><svg class="icon"><use href="#code"/></svg><div><span>For agents: MCP tools <button class="help" data-help="mcp" aria-label="About MCP tools" aria-expanded="false">?</button></span><code>pay_once · get_payment · resume_pending</code></div></footer>
+      </div>
+    </div>
+  </main>
+  <div id="tooltip" role="tooltip" hidden></div>
+</body>
+</html>
